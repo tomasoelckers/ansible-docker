@@ -1,0 +1,38 @@
+---
+- name: upgrade all packages
+  yum:
+    name: '*'
+    state: latest
+  become: yes
+  become_method: sudo
+
+- name: Install pip
+  yum:
+    name: python-pip
+    state: latest
+  become: yes
+  become_method: sudo
+
+- name: Install Docker
+  yum:
+    name: docker
+    state: latest
+  become: yes
+  become_method: sudo
+
+- name: python library docker-py
+  pip:
+    name: docker-py
+    version: 1.1.0
+  become: yes
+  become_method: sudo
+
+- name: Start Docker
+  command: systemctl start docker
+  become: yes
+  become_method: sudo
+
+- name: Enable Docker
+  command: systemctl enable docker
+  become: yes
+  become_method: sudo

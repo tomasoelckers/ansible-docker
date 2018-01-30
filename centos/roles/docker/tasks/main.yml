@@ -1,0 +1,40 @@
+---
+- name: Log into DockerHub
+  docker_login:
+    username: toelckers
+    password: Oelckers98
+    email: tomasoel@gmail.com
+  become: yes
+  become_method: sudo
+
+- name: Deploy Docker php_deploy_container
+  command: docker run -d -p 80:80 --restart=unless-stopped toelckers/php_deploy_container:firstry
+  become: yes
+  become_method: sudo
+
+- name: Deploy Docker spring-boot-docker
+  command: docker run -d -p 8080:8080 --restart=unless-stopped toelckers/spring-boot-docker
+  become: yes
+  become_method: sudo
+
+#- name: Pull and run php_deploy_container
+#  docker:
+#      name: "php_app"
+#      image: toelckers/php_deploy_container:firstry
+#      restart_policy: always
+#      ports:
+#        - "80:80"
+#  become: yes
+#  become_method: sudo
+#
+#- name: pull php_deploy_container image
+#  docker_image:
+#    name: toelckers/php_deploy_container:firstry
+#  become: yes
+#  become_method: sudo
+#
+#- name: pull spring-boot-docker image
+#  docker_image:
+#    name: toelckers/spring-boot-docker
+#  become: yes
+#  become_method: sudo

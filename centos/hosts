@@ -1,0 +1,2 @@
+[gce_1]
+35.229.79.232 ansible_connection=ssh ansible_ssh_user=tomas ansible_ssh_pass=antonia
