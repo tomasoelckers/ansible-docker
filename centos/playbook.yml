@@ -1,5 +1,5 @@
 - hosts: gce_1
 
   roles:
-    - install
+    #- install
     - docker
